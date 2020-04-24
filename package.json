@@ -2,9 +2,9 @@
   "name": "api",
   "version": "1.0.0",
   "description": "API service us Node.js and MongoDB, that supports full CRUD",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app/config/index.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,7 @@
 var logger = require("morgan"),
 cors = require("cors"),
 http = require("http"),
+//creating module express
 express = require("express"),
 bodyParser = require("body-parser"),
 mongoose = require('mongoose');
@@ -13,6 +14,12 @@ var userCtrl = require('./user-controller');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(require('./routes'));
+
+//using __dirname to get the absolute path of
+//the directory, that contains the xml.file
+app.use (express.static(__dirname + '/app'));
+
+//module.exports = app;
 
 app.post('/users', userCtrl.createUser);
 app.get('/users', userCtrl.getUsers);
