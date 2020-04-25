@@ -1,4 +1,8 @@
-var User = require('./models/user');
+const db = require("../models");
+//require('./user-controller');
+const Router = db.routes;
+
+var User = require('./user');
 
 exports.createUser = function(req, res) { 
     var newuser = new User(req.body);

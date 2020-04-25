@@ -15,9 +15,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(require('./routes'));
 
+
+//parse requests of content-type - application/x-wwww-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: tue}));
+
 //using __dirname to get the absolute path of
 //the directory, that contains the xml.file
-app.use (express.static(__dirname + '/app'));
+//app.use (express.static(__dirname + '/app'));
 
 //module.exports = app;
 
@@ -31,15 +35,17 @@ app.listen(port, function(err){
     console.log("Listening on Port: " + port)
 });
 
-mongoose.connect(process.env.MONGODB_URL, {
+const db = require("./app/models");
+
+db.mongoose.connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true
 });
-mongoose.connection.on('error', (err) => { 
+db.mongoose.connection.on('error', (err) => { 
     console.log('Mongodb Error: ', err); 
     process.exit();
 });
-mongoose.connection.on('connected', () => { 
+db.mongoose.connection.on('connected', () => { 
     console.log('MongoDB is successfully connected');
 });

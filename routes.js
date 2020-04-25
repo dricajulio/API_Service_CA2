@@ -1,6 +1,12 @@
+var path = require("path");
+var Router = require('.../routes');
+var router = new Router(path.join(__dirname,'routes'));
+
+
 var express = require('express'),
-router = express.Router(),
+var router = require("express").Router(),
 userCtrl = require('./user-controller');
+
 
 router.get('/', (req, res) => res.send('Hello World!'));
 router.post('/users', userCtrl.createUser);
